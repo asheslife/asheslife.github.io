@@ -43,7 +43,7 @@
     
     <title>
         
-            RxJava开发精要1-从.NET到RxJava | 
+            有关 Hybrid 开发模式实践总结 | 
         
         Jiang
     </title>
@@ -215,7 +215,7 @@
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Jiang">
-    <meta name="msapplication-starturl" content="http://yoursite.com/2016/01/06/RxJava开发精要1-从.NET到RxJava/">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2017/06/10/有关 Hybrid 开发模式实践总结/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Jiang">
@@ -230,16 +230,16 @@
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="http://yoursite.com/2016/01/06/RxJava开发精要1-从.NET到RxJava/">
+    <meta property="og:url" content="http://yoursite.com/2017/06/10/有关 Hybrid 开发模式实践总结/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="RxJava开发精要1-从.NET到RxJava | Jiang">
+    <meta property="og:title" content="有关 Hybrid 开发模式实践总结 | Jiang">
     <meta property="og:image" content="/img/favicon.png">
     <meta property="og:description" content="">
     
 
     
-        <meta property="article:published_time" content="Wed Jan 06 2016 20:46:25 GMT+0800">
-        <meta property="article:modified_time" content="Sun Apr 08 2018 21:02:26 GMT+0800">
+        <meta property="article:published_time" content="Sat Jun 10 2017 20:46:25 GMT+0800">
+        <meta property="article:modified_time" content="Mon Apr 09 2018 23:18:50 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -247,7 +247,7 @@
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="http://yoursite.com/2016/01/06/RxJava开发精要1-从.NET到RxJava/index.html" />
+        <link rel="canonical" href="http://yoursite.com/2017/06/10/有关 Hybrid 开发模式实践总结/index.html" />
     
 
     <!-- Structured-data for SEO -->
@@ -259,10 +259,10 @@
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "http://yoursite.com/2016/01/06/RxJava开发精要1-从.NET到RxJava/index.html",
-    "headline": "RxJava开发精要1-从.NET到RxJava",
-    "datePublished": "Wed Jan 06 2016 20:46:25 GMT+0800",
-    "dateModified": "Sun Apr 08 2018 21:02:26 GMT+0800",
+    "mainEntityOfPage": "http://yoursite.com/2017/06/10/有关 Hybrid 开发模式实践总结/index.html",
+    "headline": "有关 Hybrid 开发模式实践总结",
+    "datePublished": "Sat Jun 10 2017 20:46:25 GMT+0800",
+    "dateModified": "Mon Apr 09 2018 23:18:50 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "Jiang&#39;s Blog",
@@ -346,7 +346,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#RX-–-从-NET到RxJava"><span class="post-toc-number">1.</span> <span class="post-toc-text">RX – 从.NET到RxJava</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#微软响应式扩展"><span class="post-toc-number">2.</span> <span class="post-toc-text">微软响应式扩展</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#来到Java世界-–-Netflix-RxJava"><span class="post-toc-number">3.</span> <span class="post-toc-text">来到Java世界 – Netflix RxJava</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#RxJava的与众不同之处"><span class="post-toc-number">4.</span> <span class="post-toc-text">RxJava的与众不同之处</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">5.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前言"><span class="post-toc-number">1.</span> <span class="post-toc-text">前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#为何选择-Hybrid-开发模式"><span class="post-toc-number">2.</span> <span class="post-toc-text">为何选择 Hybrid 开发模式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1，目前工作中碰到的问题"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">1，目前工作中碰到的问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2，Web-APP、Hybrid-APP、Native-APP-对比"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">2，Web APP、Hybrid APP、Native APP 对比</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Web-APP"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">Web APP</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Hybrid-App"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">Hybrid App</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Native-App"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">Native App</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三者技术特性"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">三者技术特性</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3，主流-APP-Hybrid-应用比例"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">3，主流 APP Hybrid 应用比例</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4，选择-Hybrid-混合开发的原因"><span class="post-toc-number">2.8.</span> <span class="post-toc-text">4，选择 Hybrid 混合开发的原因</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#在实践过程中碰到什么问题和解决"><span class="post-toc-number">3.</span> <span class="post-toc-text">在实践过程中碰到什么问题和解决</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#项目背景介绍"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">项目背景介绍</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实践过程中碰到的问题"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">实践过程中碰到的问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#如何解决"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">如何解决</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#经验总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">经验总结</span></a></li></ol>
     </ul>
     
 
@@ -378,7 +378,7 @@
         
     
             <p class="article-headline-p">
-                RxJava开发精要1-从.NET到RxJava
+                有关 Hybrid 开发模式实践总结
             </p>
         </div>
 
@@ -397,7 +397,7 @@
     <!-- Author Name & Date -->
     <div>
         <strong>Jiang&#39;s Blog</strong>
-        <span>Jan 06, 2016</span>
+        <span>Jun 10, 2017</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -429,7 +429,7 @@
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=RxJava开发精要1-从.NET到RxJava&url=http://yoursite.com/2016/01/06/RxJava开发精要1-从.NET到RxJava/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=有关 Hybrid 开发模式实践总结&url=http://yoursite.com/2017/06/10/有关 Hybrid 开发模式实践总结/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 share.toWeibo
             </li>
@@ -438,7 +438,7 @@
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=RxJava开发精要1-从.NET到RxJava&url=http://yoursite.com/2016/01/06/RxJava开发精要1-从.NET到RxJava/index.html&via=Jiang&#39;s Blog" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=有关 Hybrid 开发模式实践总结&url=http://yoursite.com/2017/06/10/有关 Hybrid 开发模式实践总结/index.html&via=Jiang&#39;s Blog" target="_blank">
             <li class="mdl-menu__item">
                 share.toTwitter
             </li>
@@ -447,7 +447,7 @@
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/01/06/RxJava开发精要1-从.NET到RxJava/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/06/10/有关 Hybrid 开发模式实践总结/index.html" target="_blank">
             <li class="mdl-menu__item">
                 share.toFacebook
             </li>
@@ -456,7 +456,7 @@
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2016/01/06/RxJava开发精要1-从.NET到RxJava/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2017/06/10/有关 Hybrid 开发模式实践总结/index.html" target="_blank">
             <li class="mdl-menu__item">
                 share.toGplus
             </li>
@@ -481,31 +481,65 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">原文出自《RxJava Essentials》</span><br><span class="line">原文作者 : Ivan Morgillo</span><br></pre></td></tr></table></figure>
-<h2 id="RX-–-从-NET到RxJava"><a href="#RX-–-从-NET到RxJava" class="headerlink" title="RX – 从.NET到RxJava"></a>RX – 从.NET到RxJava</h2><p>响应式编程是一种基于异步数据流概念的编程模式。数据流就像一条河：它可以被观测，被过滤，被操作，或者为新的消费者与另外一条流合并为一条新的流。</p>
-<p>响应式编程的一个关键概念是事件。事件可以被等待，可以触发过程，也可以触发其它事件。事件是唯一的以合适的方式将我们的现实世界映射到我们的软件中：如果屋里太热了我们就打开一扇窗户。同样的，当我们更改电子表（变化的传播）中的一些数值时，我们需要更新整个表格或者我们的机器人碰到墙时会转弯（响应事件）。</p>
-<p>今天，响应式编程最通用的一个场景是UI：我们的移动App必须做出对网络调用、用户触摸输入和系统弹框的响应。在这个世界上，软件之所以是事件驱动并响应的是因为现实生活也是如此。</p>
-<h2 id="微软响应式扩展"><a href="#微软响应式扩展" class="headerlink" title="微软响应式扩展"></a>微软响应式扩展</h2><p>函数响应式编程是一个来自90年代后期受微软的一名计算机科学家Erik Meijer启发的思想，用来设计和开发微软的Rx库。</p>
-<p>Rx 是微软.NET的一个响应式扩展。Rx借助可观测的序列提供一种简单的方式来创建异步的，基于事件驱动的程序。开发者可以使用Observables模拟异步数据流，使用LINQ语法查询Observables，并且很容易管理调度器的并发。</p>
-<p>Rx让众所周知的概念变得易于实现和消费，例如push方法。在响应式的世界里，我们不能假装作用户不关注或者是不抱怨它而一味的等待函数的返回结果，网络调用，或者数据库查询的返回结果。我们时刻都在等待某些东西，这就让我们失去了并行处理其他事情的机会，提供更好的用户体验，让我们的软件免受顺序链的影响，而阻塞编程。</p>
-<p>下表列出的与.NET 枚举相关的.NET Observable</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.NET Observable 一个返回值 多个返回值</span><br><span class="line">Pull/Synchronous/Interactive  T IEnumerable&lt;T&gt;</span><br><span class="line">Push/Asynchronous/Reactive  Task&lt;T&gt; IObservable&lt;T&gt;</span><br></pre></td></tr></table></figure>
-<p>push方法把这个问题逆转了：取而代之的是不再等待结果，开发者只是简单的请求结果，而当它返回时得到一个通知即可。开发者对即将发生的事件提供一个清晰的响应链。对于每一个事件，开发者都作出相应的响应；例如，用户被要求登录的时候，提交一个携带他的用户名和密码的表单。应用程序执行登录的网络请求，接下来将要发生的情况有：</p>
-<p>显示一个成功的信息，并保存用户的个人信息。<br>显示一个错误的信息<br>正如你用push方法所看到的，开发者不需要等待结果。而是在结果返回时通知他。在这期间，他可以做他想做的任何事情：</p>
-<p>显示一个进度对话框<br>为下次登录保存用户名和密码<br>预加载一些他认为登录成功后需要耗时处理的事情</p>
-<h2 id="来到Java世界-–-Netflix-RxJava"><a href="#来到Java世界-–-Netflix-RxJava" class="headerlink" title="来到Java世界 – Netflix RxJava"></a>来到Java世界 – Netflix RxJava</h2><p>Netflix在2012年开始意识到他们的架构要满足他们庞大的用户群体已经变得步履维艰。因此他们决定重新设计架构来减少REST调用的次数。取代几十次的REST调用，而是让客户端自己处理需要的数据，他们决定基于客户端需求创建一个专门优化过的REST调用。</p>
-<p>为了实现这一目标，他们决定尝试响应式，开始将.NET Rx迁移到JVM上面。他们不想只基于Java语言；而是整个JVM，从而有可能为市场上的每一种基于JVM的语言：如Java、Closure、Groovy、Scala等等提供一种新的工具。</p>
-<p>2013年二月份,Ben Christensen 和 Jafar Husain发在Netflix技术博客的一篇文章第一次向世界展示了RxJava。</p>
-<p>主要特点有：</p>
-<p>易于并发从而更好的利用服务器的能力。<br>易于有条件的异步执行。<br>一种更好的方式来避免回调地狱。<br>一种响应式方法。<br>正如.NET,RxJava Observable 是push 迭代的等价体，即pull。pull方法是阻塞并等待的方法：消费者从源头pull值，并阻塞线程直到生产者提供新的值。</p>
-<p>push方法作用于订阅和响应：消费者订阅新值的发射，当它们可用时生产者push这些新值并通知消费者。在这一点上，消费者消费了它们。push方法很明显更灵活，因为从逻辑和实践的观点来看，开发者只需忽略他需要的数据是来自同步还是异步；他的代码将仍然起作用。</p>
-<h2 id="RxJava的与众不同之处"><a href="#RxJava的与众不同之处" class="headerlink" title="RxJava的与众不同之处"></a>RxJava的与众不同之处</h2><p>从纯Java的观点看，RxJava Observable类源自于经典的Gang Of Four的观察者模式。</p>
-<p>它添加了三个缺少的功能：</p>
-<p>生产者在没有更多数据可用时能够发出信号通知：onCompleted()事件。<br>生产者在发生错误时能够发出信号通知：onError()事件。<br>RxJava Observables 能够组合而不是嵌套，从而避免开发者陷入回调地狱。<br>Observables和Iterables共用一个相似的API：我们在Iterable可以执行的许多操作也都同样可以在Observables上执行。当然，由于Observables流的本质，没有如Iterable.remove()这样相应的方法。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Pattern 一个返回值 多个返回值</span><br><span class="line">Synchronous T getData() Iterable&lt;T&gt;</span><br><span class="line">Asynchronous  Future&lt;T&gt; getData() Observable&lt;T&gt; getData()</span><br></pre></td></tr></table></figure>
-<p>从语义的角度来看，RxJava就是.NET Rx。从语法的角度来看，Netflix考虑到了对应每个Rx方法,保留了Java代码规范和基本的模式。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>本章中，我们初步探索了响应式的世界。从微软的.NET到Netflix的RxJava，我们了解了Rx是如何诞生的，我们也了解到传统的方法与响应式方法相比之间的相似和不同。</p>
-<p>下一章，我们将学习到Observables是什么，以及如何创建它并把响应式编程应用到我们的日常编码中去。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>随着公司业务不断发展，移动开发项目越来越多，项目任务时间紧，我们内部开发流程是以项目为导向，有别于一般公司对产品不断迭代的做法，但移动端开发人员资源有限，需要在不同项目之间做业务场景切换开发，就会经常出现项目完成时间 Delay。面对这样的问题，我们该如何去解决呢？现在了解到的现状是每个业务组都有配备 Web 前端开发人员，那么是否能把涉及到业务模块分发给具体业务组 Web 前端开发人员去开发，剥离业务模块，我们移动端开发人员则专注于框架的开发或者手机端设备能力开发，比如可支持调用摄像头，监听网络状态变化，提供地理位置信息等等，有没有这样一套适合的解决方案呢，答案当然是有的。我们引入了可利用 Web 前端能力和移动端操作系统原生能力相结合开发模式，叫做 Hybrid 混合开发。</p>
+<h2 id="为何选择-Hybrid-开发模式"><a href="#为何选择-Hybrid-开发模式" class="headerlink" title="为何选择 Hybrid 开发模式"></a>为何选择 Hybrid 开发模式</h2><h3 id="1，目前工作中碰到的问题"><a href="#1，目前工作中碰到的问题" class="headerlink" title="1，目前工作中碰到的问题"></a>1，目前工作中碰到的问题</h3><p>随着公司业务飞速发展，移动端定制的项目越来越多，同时每个项目的业务逻辑呈现出复杂化和差异化特点，每个项目都需要提供 Android 版本和 IOS 版本，增加开发成本，开发周期往往又会被拖长。同时近年来前端技术蓬勃发展，HTML5 大行其道，很多主流 APP 厂商都利用 HTML5 前端能力来编写业务模块并结合原生设备能力进行混合开发，常见的比如淘宝、京东、微信、携程等等。虽然目前业务项目多，但是用户交互体验要求不高，常见页面也是列表，表单居多，适合充分利用HTML 5能力，因此引入Hybrid 混合开发模式，这样只需要 Web 前端开发人员写一遍前端业务代码，却能同时在Android 系统和 IOS 系统中执行。</p>
+<h3 id="2，Web-APP、Hybrid-APP、Native-APP-对比"><a href="#2，Web-APP、Hybrid-APP、Native-APP-对比" class="headerlink" title="2，Web APP、Hybrid APP、Native APP 对比"></a>2，Web APP、Hybrid APP、Native APP 对比</h3><p>目前主流应用程序大体分为三类：Web App、Hybrid App、 Native App，如图：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fq6rocyegfj30jg0a8tb9.jpg" alt=""></p>
+<h3 id="Web-APP"><a href="#Web-APP" class="headerlink" title="Web APP"></a>Web APP</h3><p>Web App 指采用Html5 语言写出的 App，不需要下载安装。类似于现在所说的轻应用。生存在浏览器中的应用，基本上可以说是触屏版的网页应用。</p>
+<p>优点</p>
+<p>（1）开发成本低，更新快<br>（2）更新无需通知用户，不需要手动升级<br>（3）能够跨多个平台和终端</p>
+<p>缺点：</p>
+<p>（1）临时性的入口<br>（2）无法获取系统级别的通知，提醒，动效等等<br>（3）用户留存率低<br>（4）设计受限制诸多<br>（5）体验较差</p>
+<h3 id="Hybrid-App"><a href="#Hybrid-App" class="headerlink" title="Hybrid App"></a>Hybrid App</h3><p>Hybrid App 从外观上来看是一个Native App ，实则只有一个UIWebView，里面访问的是一个Web App ，如新闻类和视频类的应用普遍采取该策略：Native 的框架加上Web 的内容。不同于Native App 需要针对不同的平台使用不同的开发语言（如使用Objective-C、Swift开发iOS应用，使用Java等开发Android应用），Hybrid App 允许开发者仅使用一套网页语言代码（HTML5+CSS+JavaScript），即可开发能够在不同平台上部署的类原生应用 。由于Hybrid App 结合了Native app良好用户交互体验和Web App 跨平台开发的优势，能够显著节省移动应用开发的时间和成本，Hybrid App 得到越来越多公司的青睐。</p>
+<p>按照网页语言和程序语言的混合，Hybrid App 通常可以分为三种类型：</p>
+<p>多View混合型：Native View 和 Web View 独立展示，交替出现。 其应用主体通常是Native App，Web技术作为补充。即在需要的时候，将 Web View作为独立的 View 运行，在 Web View内完成相关的展示操作。开发难度与Native App相当.比如：微信里的公众号文章使用的是Web View 。<br>单View混合型：在同一个View 内，Native View 和Web View 为层叠关系，同时出现。开发成本较高，难度较大，但是体验较好。比如：百度搜索同时实现充分的灵活性和较好的用户体验。<br>Web主体型：应用主体是Web View ，穿插 Native 功能，主要以网页语言编写。整体开发难度低，基本可以实现跨平台，而用户体验好坏，主要取决于底层中间件的交互与跨平台能力。比如：项目管理工具 Basecamp 使用Web view呈现内容，调用系统原生 API 实现界面导航等功能来提高用户体验。<br>Hybrid App 也并非是完美的解决方案。由于其使用 HTML5，某些依赖于复杂的原生功能或者繁重的过渡动画的应用会出现卡顿。同时，为了模拟Native App 的UI和感官，需要投入额外的时间和精力；尽管可以跨平台，但是并不能完全支持所有的设备和操作系统。最后，如果应用的体验不够原生化，如一个简单的网站，则还有被Apple App Store拒绝的风险。</p>
+<h3 id="Native-App"><a href="#Native-App" class="headerlink" title="Native App"></a>Native App</h3><p>Native APP 指的是原生程序，一般依托于操作系统，有很强的交互，是一个完整的 App，可拓展性强。需要用户下载安装使用。</p>
+<p>优点：</p>
+<p>（1）打造完美的用户体验，性能稳定<br>（2）操作速度快，上手流畅<br>（3）访问本地资源（通讯录，相册）<br>（4）设计出色的动效，转场，<br>（5）拥有系统级别的贴心通知或提醒，用户留存率高</p>
+<p>缺点：</p>
+<p>（1）分发成本高（不同平台有不同的开发语言和界面适配）<br>（2）维护成本高（例如一款App已更新至V5版本，但仍有用户在使用V2， V3， V4版本，需要更多的开发人员维护之前的版本）<br>（3）更新缓慢，根据不同平台，提交–审核–上线 等等不同的流程，需要经过的流程较复杂</p>
+<h3 id="三者技术特性"><a href="#三者技术特性" class="headerlink" title="三者技术特性"></a>三者技术特性</h3><p>如下图表中对比了Native App、 Hybrid App、Web App在不同方面的表现，可以根据实际情况选择最佳的解决方案。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fq6rq4kh1uj30gj0cdgoi.jpg" alt=""></p>
+<h3 id="3，主流-APP-Hybrid-应用比例"><a href="#3，主流-APP-Hybrid-应用比例" class="headerlink" title="3，主流 APP Hybrid 应用比例"></a>3，主流 APP Hybrid 应用比例</h3><p>那么在实际应用场景中，有哪些选择了Hybrid app呢？实际上，我们很可能使用过很多Hybrid app，却并没有意识到它们是借了Native台子唱戏的Web app。根据Appcelerator的官网，目前单是运行基于它的平台搭建的Hybrid app的设备就有近2.86亿台。国外常见的有LinkedIn、Yelp、Netflix、Wunderlist ，国内主流的大厂基本也是采用了Hybrid 模式，应该是应用很广泛，同时技术上也是成熟稳定。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fq6rsu0ixmj30b408sjuh.jpg" alt=""></p>
+<h3 id="4，选择-Hybrid-混合开发的原因"><a href="#4，选择-Hybrid-混合开发的原因" class="headerlink" title="4，选择 Hybrid 混合开发的原因"></a>4，选择 Hybrid 混合开发的原因</h3><ol>
+<li><p>Hybrid 开发模式在开发页面 UI 上有天生的便利，而原生的则如果需要一个比较华丽的界面，就需要花很长的时间去开发。</p>
+</li>
+<li><p>在业务上，看具体情况，有些简单业务在 Web上就可以处理，而如果涉及到复杂的业务，则可以用原生来写。</p>
+</li>
+<li><p>在基本能力上，原生的强，可以提供手机端独有的特性，但 Hybrid 则需要依赖 Javascript 中间层进行转化获取设备能力。</p>
+</li>
+<li><p>对于少界面，重业务的可以用原生，对于多界面，重效果的，可以用 Web 方式开发</p>
+</li>
+</ol>
+<p>​</p>
+<h2 id="在实践过程中碰到什么问题和解决"><a href="#在实践过程中碰到什么问题和解决" class="headerlink" title="在实践过程中碰到什么问题和解决"></a>在实践过程中碰到什么问题和解决</h2><h3 id="项目背景介绍"><a href="#项目背景介绍" class="headerlink" title="项目背景介绍"></a>项目背景介绍</h3><p>目前在一个项目实行的开发模式就是 Hybrid 混合开发，Web 技术与 Android 原生能力结合开发，Web 技术负责界面开发和相关业务， Android 原生能力则提供手机端特有设备能力，比如调用摄像头，网络状态监听，数据库操作等等。但这个项目的特殊性相关业务与我们提供的 Android 原生插件能力高度耦合，比如为这个项目提供数据库插件就是专门定制开发的，对于 Excel 插件的能力也是高度依赖一机一档相关字段，这跟我们选型用Hybrid 混合开发模式 的初心是相背离。我们初心是希望 Web 开发人员只需要专注于业务开发和界面绘制，原生部分则是提供相应的Android 设备能力集即可，每个插件跟业务是完全无关，这样就可以做到原生开发和Web开发互相解耦，两者之间通过接口隔离即可。</p>
+<h3 id="实践过程中碰到的问题"><a href="#实践过程中碰到的问题" class="headerlink" title="实践过程中碰到的问题"></a>实践过程中碰到的问题</h3><p>无论如何，一机一档项目是第一个应用 Hybrid 混合开发进行实战的项目，遇到的问题或者坑都是很正常，积极面对解决，并且不断进行总结和反思。把之前碰到的问题，简单罗列总结下：</p>
+<ol>
+<li><p>开发人员调试困难问题。前端人员在开发时候是编写HTML5页面，所运行的环境跟 PC 端有很大的不同，因为需要运行在具体手机的环境上，因此需要每次编写完，需要通过移动端人员集成打包出一个APP 包进行安装验证，每新增或修改一个页面就需要重新打包验证，每次都需要集成测试，步骤繁琐，效率低下。</p>
+</li>
+<li><p>项目集成测试问题。Android 系统 Webview 和 PC 端浏览器内核版本差异问题导致加载效果不一致。</p>
+</li>
+<li><p>前端开发框架兼容问题。前端开发人员技术选型是基于 Vue.js 框架，这是一个渐进式 Javascript 框架，刚开始不支持。</p>
+</li>
+<li><p>文档不规范问题。在前期开发阶段，文档提供不详细，开发人员使用规则不清楚，导致沟通成本增加。</p>
+</li>
+<li><p>Webview 性能问题。</p>
+</li>
+</ol>
+<h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><ol>
+<li><p>关于调试困难问题。提供一个调试工具叫做 Chrome DevTool，通过 Inspect 模式加载手机端里的 HTML5 页面，为何选择用 Chrome，因为Chrome 是目前主流前端开发调试利器，不仅能支持 Web 端开发，对于 HTML5 页面调试开发同样是能监听到 Javascript 报错或 CSS 报错，对于资源、网络、日志、内存等等，都是一步到位。同时在 APP 里提供一个在线调试环境，就是 Web 前端开发人员布置一个站点，在手机端通过 IP 地址远程访问站点，这样就可以在手机端实时看到刚刚修改内容是什么。</p>
+</li>
+<li><p>关于项目集成测试问题。在集成测试阶段，对Android 系统 Webview 和 PC 端浏览器内核版本区别有进一步认识，在Android 5.0 之前选用的是 Webkit 内核来加载 Web 资源文件，而在 Android 5.0 之后，则选用 Chromium 作为内核来加载，那么在为 PC 端浏览器端，如果你选择的是 Chorme 作为你默认浏览器的话，它的内核也是 Chromium 。尽管两者内核类型一样，都是 Chromium ，但两者加载 Javascript 效果上表现也不一样，比如最新浏览器版本可支持 ES 6 特性，但是在最新版的手机上就不一定 ES 6特性，目前通过调查 Android 5.0 之前的系统市场占有率，发现比例为不到20%，暂时适配到 Android 5.0 版本。</p>
+</li>
+<li><p>关于前端开发框架兼容问题。刚开始选用 Hybrid 开发模式时，对于公司内部 前端开发人员选用何种前端框架不甚了解，我们这边提供的 Demo 则是最原始的 HTML + Javascript + CSS 写法，以为前端人员只需要简单了解下就能上手，但在实践中发现却不是这样的。他们选型的前端技术是基于 Vue.js ，因为 Vue.js 是需要编译打包，生成发布的内容是混淆过的HTML + Javascript ，里面 Javascript 文件加载顺序使得我们开发 Javascript 插件调用引起问题，那样就会导致前端人员在调用具体插件能力时候，发现这个插件里的某个方法还没定义，就导致页面数据出错。后来通过了解 Vue.js 开发方式，调整项目工程中 Javascript 执行顺序， 确保具体插件调用在 Vue.js 执行前触发。</p>
+</li>
+</ol>
+<p>4.关于文档不规范问题。在前期开发阶段，前端人员没有统一查找目前已有插件能力的地方，仅仅根据我们提供的 Javascript 文件里的方法注释，虽然是针对每个方法的 Demo 用法，但是在实际开发中，前端开发人员也会调用出错。不是这个方法回调方法写错，就是参数类型传入传错，这样就导致的一个结果，前端开发人员不断地过来询问这个方法是如何调用的，我明明已经根据你的 Demo 写法进行编码了，为何还是报错的，前期的沟通成本还是很高。所以需要一个提供统一文档地方，里面写明了具体配置如何，写法如何，怎么是一步一步走，基本上可以避免类似的错误，更好的提高工作效率，减少沟通成本，所以一个规范的文档是很有必要的。</p>
+<ol start="5">
+<li>关于 WebView 性能加载问题。这是在解决 WebView 加载 HTML + Javascript + CSS 等资源时发现一个白屏问题，同时用 HTML5 做页面本身就会比原生加载来的慢。为了提高用户体验，在加载等待时，提供一个加载框来提示，等 HTML 资源文件全部渲染完毕后，等待框再消失，这样就可以避免一定的白屏现象。</li>
+</ol>
+<h2 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h2><p>整体来说，为何会选择 Hybrid 混合开发模式是基于当前业务场景需要，技术是服务于业务发展，业务场景变化导致技术解决方案的选型也需要相应变化。面对以项目导向的开发现状，不能一昧追求最新最酷的技术，也不能对过时的技术方案过分保守，应该需要对当前业务场景进行判断，选择合适的解决方案才最佳的策略，没有一劳永逸的技术手段，只有时刻变化的业务需求和不断更新迭代技术方案。通过在具体项目中实战，面对问题，积极解决问题，也正是在解决问题过程中，产生新的想法和尝试，不断地完善框架能力，使得框架功能越来越全，进而更好的服务于业务开发问题，提高业务响应能力，降低开发成本，提升工作效率。</p>
 
         
     
@@ -526,21 +560,13 @@
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2016/01/07/RxJava开发精要2-为什么是Observables/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            post.newer
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2013/07/13/高效地配置OkHttp/" id="post_nav-older" class="next-content">
+        <a href="/2017/04/11/如何进行APK瘦身/" id="post_nav-older" class="next-content">
             post.older
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">

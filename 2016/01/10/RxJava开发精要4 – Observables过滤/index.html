@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html style="display: none;" >
+    <head>
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.2 -->
+    <script>
+        window.materialVersion = "1.5.2"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            RxJava开发精要4 – Observables过滤 | 
+        
+        Jiang
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
+
+    <meta name="format-detection" content="telephone=no"/>
+    <meta name="description" itemprop="description" content="">
+    <meta name="keywords" content="">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.en.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-color: #F5F5F5;
+      }
+
+      /* blog_info bottom background */
+      #scheme-Paradox .material-layout .something-else .mdl-card__supporting-text{
+        background-color: #fff;
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 800ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Jiang">
+    <meta name="msapplication-starturl" content="http://yoursite.com/2016/01/10/RxJava开发精要4 – Observables过滤/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="Jiang">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/favicon.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="http://yoursite.com/2016/01/10/RxJava开发精要4 – Observables过滤/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="RxJava开发精要4 – Observables过滤 | Jiang">
+    <meta property="og:image" content="/img/favicon.png">
+    <meta property="og:description" content="">
+    
+
+    
+        <meta property="article:published_time" content="Sun Jan 10 2016 20:46:25 GMT+0800">
+        <meta property="article:modified_time" content="Sun Apr 08 2018 22:30:49 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="http://yoursite.com/2016/01/10/RxJava开发精要4 – Observables过滤/index.html" />
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "http://yoursite.com/2016/01/10/RxJava开发精要4 – Observables过滤/index.html",
+    "headline": "RxJava开发精要4 – Observables过滤",
+    "datePublished": "Sun Jan 10 2016 20:46:25 GMT+0800",
+    "dateModified": "Sun Apr 08 2018 22:30:49 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "Jiang&#39;s Blog",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/avatar.png"
+        },
+        "description": "Hi, nice to meet you"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "Jiang",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/favicon.png"
+        }
+    },
+    "keywords": "",
+    "description": "",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn"
+        class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#过滤Observables"><span class="post-toc-number">1.</span> <span class="post-toc-text">过滤Observables</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#过滤序列"><span class="post-toc-number">2.</span> <span class="post-toc-text">过滤序列</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#获取我们需要的数据"><span class="post-toc-number">3.</span> <span class="post-toc-text">获取我们需要的数据</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Take"><span class="post-toc-number">4.</span> <span class="post-toc-text">Take</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#TakeLast"><span class="post-toc-number">5.</span> <span class="post-toc-text">TakeLast</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#有且仅有一次"><span class="post-toc-number">6.</span> <span class="post-toc-text">有且仅有一次</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Distinct"><span class="post-toc-number">7.</span> <span class="post-toc-text">Distinct</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#注意"><span class="post-toc-number">8.</span> <span class="post-toc-text">注意</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#DistinctUntilsChanged"><span class="post-toc-number">9.</span> <span class="post-toc-text">DistinctUntilsChanged</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#First-and-last"><span class="post-toc-number">10.</span> <span class="post-toc-text">First and last</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Skip-and-SkipLast"><span class="post-toc-number">11.</span> <span class="post-toc-text">Skip and SkipLast</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#ElementAt"><span class="post-toc-number">12.</span> <span class="post-toc-text">ElementAt</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Sampling"><span class="post-toc-number">13.</span> <span class="post-toc-text">Sampling</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Timeout"><span class="post-toc-number">14.</span> <span class="post-toc-text">Timeout</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Debounce"><span class="post-toc-number">15.</span> <span class="post-toc-text">Debounce</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总结"><span class="post-toc-number">16.</span> <span class="post-toc-text">总结</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 19 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                RxJava开发精要4 – Observables过滤
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/avatar.png" width="44px" height="44px" alt="Author Avatar"/>
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>Jiang&#39;s Blog</strong>
+        <span>Jan 10, 2016</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=RxJava开发精要4 – Observables过滤&url=http://yoursite.com/2016/01/10/RxJava开发精要4 – Observables过滤/index.html&pic=http://yoursite.com/img/favicon.png&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                share.toWeibo
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=RxJava开发精要4 – Observables过滤&url=http://yoursite.com/2016/01/10/RxJava开发精要4 – Observables过滤/index.html&via=Jiang&#39;s Blog" target="_blank">
+            <li class="mdl-menu__item">
+                share.toTwitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2016/01/10/RxJava开发精要4 – Observables过滤/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                share.toFacebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=http://yoursite.com/2016/01/10/RxJava开发精要4 – Observables过滤/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                share.toGplus
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">原文出自《RxJava Essentials》</span><br><span class="line">原文作者 : Ivan Morgillo</span><br></pre></td></tr></table></figure>
+<h2 id="过滤Observables"><a href="#过滤Observables" class="headerlink" title="过滤Observables"></a>过滤Observables</h2><p>在上一章中，我们学习了使用RxJava创建一个Android工程以及如何创建一个可观测的列表来填充RecyclerView。我们现在知道了如何从头、从列表、从一个已存在的传统Java函数来创建Observable。</p>
+<p>这一章中，我们将研究可观测序列的本质：过滤。我们将学到如何从发射的Observable中选取我们想要的值，如何获取有限个数的值，如何处理溢出的场景，以及更多的有用的技巧。</p>
+<h2 id="过滤序列"><a href="#过滤序列" class="headerlink" title="过滤序列"></a>过滤序列</h2><p>RxJava让我们使用filter()方法来过滤我们观测序列中不想要的值，在上一章中，我们在几个例子中使用了已安装的应用列表，但是我们只想展示以字母C开头的已安装的应用该怎么办呢？在这个新的例子中，我们将使用同样的列表，但是我们会过滤它，通过把合适的谓词传给filter()函数来得到我们想要的值。</p>
+<p>上一章中loadList()函数可以改成这样：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">private void loadList(List&lt;AppInfo&gt; apps) &#123;</span><br><span class="line">    mRecyclerView.setVisibility(View.VISIBLE);</span><br><span class="line">    Observable.from(apps)</span><br><span class="line">            .filter((appInfo) -&gt;</span><br><span class="line">            appInfo.getName().startsWith(<span class="string">"C"</span>))</span><br><span class="line">            .subscribe(new Observable&lt;AppInfo&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">                @Override</span><br><span class="line">                public void <span class="function"><span class="title">onCompleted</span></span>() &#123;</span><br><span class="line">                    mSwipeRefreshLayout.setRefreshing(<span class="literal">false</span>);</span><br><span class="line">                &#125;</span><br><span class="line"> </span><br><span class="line">                @Override</span><br><span class="line">                public void onError(Throwable e) &#123;</span><br><span class="line">                    Toast.makeText(getActivity(), <span class="string">"Something went wrong!"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    mSwipeRefreshLayout.setRefreshing(<span class="literal">false</span>);</span><br><span class="line">                &#125;</span><br><span class="line"> </span><br><span class="line">                @Override</span><br><span class="line">                public void onNext(AppInfo appInfo) &#123;</span><br><span class="line">                    mAddedApps.add(appInfo); </span><br><span class="line">                    mAdapter.addApplication(mAddedApps.size() - 1,appInfo);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们从上一章中的loadList()函数中添加下面一行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.fliter((appInfo -&gt; appInfo.getName().startsWith(<span class="string">"C"</span>))</span><br></pre></td></tr></table></figure>
+<p>创建Observable完以后，我们从发出的每个元素中过滤掉开头字母不是C的。为了让这里更清楚一些，我们用Java 7的语法来实现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.filter(new Func1&lt;AppInfo,Boolean&gt;()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Boolean call(AppInfo appInfo)&#123;</span><br><span class="line">        <span class="built_in">return</span> appInfo.getName().startsWith(<span class="string">"C"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>我们传一个新的Func1对象给filter()函数，即只有一个参数的函数。Func1有一个AppInfo对象来作为它的参数类型并且返回Boolean对象。只要条件符合filter()函数就会返回true。此时，值会发射出去并且所有的观察者都会接收到。</p>
+<p>正如你想的那样，从一个我们得到的可观测序列中创建一个我们需要的序列filter()是很好用的。我们不需要知道可观测序列的源或者为什么发射这么多不同的数据。我们只是想要这些元素的子集来创建一个可以在应用中使用的新序列。这种思想促进了我们编码中的分离性与抽象性。</p>
+<p>filter()函数最常用的用法之一时过滤null对象：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">.filter(new Func1&lt;AppInfo,Boolean&gt;()&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public Boolean call(AppInfo appInfo)&#123;</span><br><span class="line">        <span class="built_in">return</span> appInfo != null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>这看起来简单，对于简单的事情有许多模板代码，但是它帮我们免去了在onNext()函数调用中再去检测null值，让我们把注意力集中在应用业务逻辑上。</p>
+<p>下图展示了过滤出的C字母开头的已安装的应用列表。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fq5m75n5bwj30f40ti0uj.jpg" alt=""></p>
+<h2 id="获取我们需要的数据"><a href="#获取我们需要的数据" class="headerlink" title="获取我们需要的数据"></a>获取我们需要的数据</h2><p>当我们不需要整个序列时，而是只想取开头或结尾的几个元素，我们可以用take()或takeLast()。</p>
+<h2 id="Take"><a href="#Take" class="headerlink" title="Take"></a>Take</h2><p>如果我们只想要一个可观测序列中的前三个元素那将会怎么样，发射它们，然后让Observable完成吗？take()函数用整数N来作为一个参数，从原始的序列中发射前N个元素，然后完成：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">private void loadList(List&lt;AppInfo&gt; apps) &#123;</span><br><span class="line">    mRecyclerView.setVisibility(View.VISIBLE);</span><br><span class="line">    Observable.from(apps)</span><br><span class="line">            .take(3)</span><br><span class="line">            .subscribe(new Observable&lt;AppInfo&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">                @Override</span><br><span class="line">                public void <span class="function"><span class="title">onCompleted</span></span>() &#123;</span><br><span class="line">                    mSwipeRefreshLayout.setRefreshing(<span class="literal">false</span>);</span><br><span class="line">                &#125;</span><br><span class="line"> </span><br><span class="line">                @Override</span><br><span class="line">                public void onError(Throwable e) &#123;</span><br><span class="line">                    Toast.makeText(getActivity(), <span class="string">"Something went wrong!"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    mSwipeRefreshLayout.setRefreshing(<span class="literal">false</span>);</span><br><span class="line">                &#125;</span><br><span class="line"> </span><br><span class="line">                @Override</span><br><span class="line">                public void onNext(AppInfo appInfo) &#123;</span><br><span class="line">                    mAddedApps.add(appInfo); </span><br><span class="line">                    mAdapter.addApplication(mAddedApps.size() - 1,appInfo);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>下图中展示了发射数字的一个可观测序列。我们对这个可观测序列应用take(2)函数，然后我们创建一个只发射可观测源的第一个和第二个数据的新序列。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fq5m7uev5lj30ui0bywfe.jpg" alt=""></p>
+<h2 id="TakeLast"><a href="#TakeLast" class="headerlink" title="TakeLast"></a>TakeLast</h2><p>如果我们想要最后N个元素，我们只需使用takeLast()函数：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Observable.from(apps)</span><br><span class="line">        .takeLast(3)</span><br><span class="line">        .subscribe(https://github.com/yuxingxin/RxJava-Essentials-CN/raw/master.);</span><br></pre></td></tr></table></figure>
+<p>正如听起来那样不值一提，重点注意takeLast()函数由于用一组有限的发射数的本质使得它仅可用于完成的序列。</p>
+<p>下图中展示了如何从可观测源中发射最后一个元素来创建一个新的序列：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fq5m89de5wj30ug0byab2.jpg" alt=""></p>
+<p>下图中展示了我们在已安装的应用列表使用take()和takeLast()函数后发生的结果：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fq5m8sgh97j30mi0mk40a.jpg" alt=""></p>
+<h2 id="有且仅有一次"><a href="#有且仅有一次" class="headerlink" title="有且仅有一次"></a>有且仅有一次</h2><p>一个可观测序列会在出错时重复发射或者被设计成重复发射。distinct()和distinctUntilChanged()函数可以方便的让我们处理这种重复问题。</p>
+<h2 id="Distinct"><a href="#Distinct" class="headerlink" title="Distinct"></a>Distinct</h2><p>如果我们想对一个指定的值仅处理一次该怎么办？我们可以对我们的序列使用distinct()函数去掉重复的。就像takeLast()一样，distinct()作用于一个完整的序列，然后得到重复的过滤项，它需要记录每一个发射的值。如果你在处理一大堆序列或者大的数据记得关注内存使用情况。</p>
+<p>下图展示了如何在一个发射1和2两次的可观测源上创建一个无重的序列：<br><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fq5m949ornj31060e275l.jpg" alt=""></p>
+<p>为了创建我们例子中序列，我们将使用我们至今已经学到的几个方法：</p>
+<ul>
+<li>take()：它有一小组的可识别的数据项。</li>
+<li>repeat()：创建一个有重复的大的序列。</li>
+</ul>
+<p>然后，我们将应用distinct()函数来去除重复。</p>
+<h2 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h2><p>我们用程序实现一个重复的序列，然后过滤出它们。这听起来时不可思议的，但是为了实现这个例子来使用我们至今为止已学习到的东西则是个不错的练习。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Observable&lt;AppInfo&gt; fullOfDuplicates = Observable.from(apps)</span><br><span class="line">    .take(3)</span><br><span class="line">    .repeat(3);</span><br></pre></td></tr></table></figure>
+<p>fullOfDuplicates变量里把我们已安装应用的前三个重复了3次：有9个并且许多重复的。然后，我们使用distinct():</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">fullOfDuplicates.distinct()</span><br><span class="line">            .subscribe(new Observable&lt;AppInfo&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">                @Override</span><br><span class="line">                public void <span class="function"><span class="title">onCompleted</span></span>() &#123;</span><br><span class="line">                    mSwipeRefreshLayout.setRefreshing(<span class="literal">false</span>);</span><br><span class="line">                &#125;</span><br><span class="line"> </span><br><span class="line">                @Override</span><br><span class="line">                public void onError(Throwable e) &#123;</span><br><span class="line">                    Toast.makeText(getActivity(), <span class="string">"Something went wrong!"</span>, Toast.LENGTH_SHORT).show();</span><br><span class="line">                    mSwipeRefreshLayout.setRefreshing(<span class="literal">false</span>);</span><br><span class="line">                &#125;</span><br><span class="line"> </span><br><span class="line">                @Override</span><br><span class="line">                public void onNext(AppInfo appInfo) &#123;</span><br><span class="line">                    mAddedApps.add(appInfo); </span><br><span class="line">                    mAdapter.addApplication(mAddedApps.size() - 1,appInfo);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>结果，很明显，我们得到：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fq5m9psilej30f20tk3zw.jpg" alt=""></p>
+<h2 id="DistinctUntilsChanged"><a href="#DistinctUntilsChanged" class="headerlink" title="DistinctUntilsChanged"></a>DistinctUntilsChanged</h2><p>如果在一个可观测序列发射一个不同于之前的一个新值时让我们得到通知这时候该怎么做？我们猜想一下我们观测的温度传感器，每秒发射的室内温度：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">21°https://github.com/yuxingxin/RxJava-Essentials-CN/raw/master.21°https://github.com/yuxingxin/RxJava-Essentials-CN/raw/master.21°https://github.com/yuxingxin/RxJava-Essentials-CN/raw/master.21°https://github.com/yuxingxin/RxJava-Essentials-CN/raw/master.22°https://github.com/yuxingxin/RxJava-Essentials-CN/raw/master.</span><br></pre></td></tr></table></figure>
+<p>每次我们获得一个新值，我们都会更新当前正在显示的温度。我们出于系统资源保护并不想在每次值一样时更新数据。我们想忽略掉重复的值并且在温度确实改变时才想得到通知。ditinctUntilChanged()过滤函数能做到这一点。它能轻易的忽略掉所有的重复并且只发射出新的值。</p>
+<p>下图用图形化的方式展示了我们如何将distinctUntilChanged()函数应用在一个存在的序列上来创建一个新的不重复发射元素的序列。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fq5ma51zexj30pc0cgjsu.jpg" alt=""></p>
+<h2 id="First-and-last"><a href="#First-and-last" class="headerlink" title="First and last"></a>First and last</h2><p>下图展示了如何从一个从可观测源序列中创建只发射第一个元素的序列。</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fq5maggy36j30ug0bwwfd.jpg" alt=""></p>
+<p>first()方法和last()方法很容易弄明白。它们从Observable中只发射第一个元素或者最后一个元素。这两个都可以传Func1作为参数，：一个可以确定我们感兴趣的第一个或者最后一个的谓词：</p>
+<p>下图展示了last()应用在一个完成的序列上来创建一个仅仅发射最后一个元素的新的Observable。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fq5matgsb4j30u80bmjs7.jpg" alt=""></p>
+<p>与first()和last()相似的变量有：firstOrDefault()和lastOrDefault().这两个函数当可观测序列完成时不再发射任何值时用得上。在这种场景下，如果Observable不再发射任何值时我们可以指定发射一个默认的值</p>
+<h2 id="Skip-and-SkipLast"><a href="#Skip-and-SkipLast" class="headerlink" title="Skip and SkipLast"></a>Skip and SkipLast</h2><p>下图中展示了如何使用skip(2)来创建一个不发射前两个元素而是发射它后面的那些数据的序列。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fq5mb5i5poj30ug0bygmi.jpg" alt=""></p>
+<p>skip()和skipLast()函数与take()和takeLast()相对应。它们用整数N作参数，从本质上来说，它们不让Observable发射前N个或者后N个值。如果我们知道一个序列以没有太多用的“可控”元素开头或结尾时我们可以使用它。</p>
+<p>下图与前一个场景相对应：我们创建一个新的序列，它会跳过后面两个元素从源序列中发射剩下的其他元素。</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fq5mbh4c3rj30uc0c4jsd.jpg" alt=""></p>
+<h2 id="ElementAt"><a href="#ElementAt" class="headerlink" title="ElementAt"></a>ElementAt</h2><p>如果我们只想要可观测序列发射的第五个元素该怎么办？elementAt()函数仅从一个序列中发射第n个元素然后就完成了。</p>
+<p>如果我们想查找第五个元素但是可观测序列只有三个元素可供发射时该怎么办？我们可以使用elementAtOrDefault()。下图展示了如何通过使用elementAt(2)从一个序列中选择第三个元素以及如何创建一个只发射指定元素的新的Observable。</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fq5mbsdc3wj30ui0bqjsb.jpg" alt=""></p>
+<h2 id="Sampling"><a href="#Sampling" class="headerlink" title="Sampling"></a>Sampling</h2><p>让我们再回到那个温度传感器。它每秒都会发射当前室内的温度。说实话，我们并不认为温度会变化这么快，我们可以使用一个小的发射间隔。在Observable后面加一个sample()，我们将创建一个新的可观测序列，它将在一个指定的时间间隔里由Observable发射最近一次的数值：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Observable&lt;Integer&gt; sensor = [...]</span><br><span class="line"> </span><br><span class="line">sensor.sample(30,TimeUnit.SECONDS)</span><br><span class="line">    .subscribe(new Observable&lt;Integer&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">        @Override</span><br><span class="line">        public void <span class="function"><span class="title">onCompleted</span></span>() &#123;</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        @Override</span><br><span class="line">        public void onError(Throwable e) &#123;</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        @Override</span><br><span class="line">        public void onNext(Integer currentTemperature) &#123;</span><br><span class="line">            updateDisplay(currentTemperature)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>例子中Observable将会观测温度Observable然后每隔30秒就会发射最后一个温度值。很明显，sample()支持全部的时间单位：秒，毫秒，天，分等等。</p>
+<p>下图中展示了一个间隔发射字母的Observable如何采样一个发射数字的Observable。Observable的结果将会发射每个已发射字母的最后一组数据：1，4，5.</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fq5mca08ovj30ug0e6dgx.jpg" alt=""></p>
+<p>如果我们想让它定时发射第一个元素而不是最近的一个元素，我们可以使用throttleFirst()。</p>
+<h2 id="Timeout"><a href="#Timeout" class="headerlink" title="Timeout"></a>Timeout</h2><p>假设我们工作的是一个时效性的环境，我们温度传感器每秒都在发射一个温度值。我们想让它每隔两秒至少发射一个，我们可以使用timeout()函数来监听源可观测序列,就是在我们设定的时间间隔内如果没有得到一个值则发射一个错误。我们可以认为timeout()为一个Observable的限时的副本。如果在指定的时间间隔内Observable不发射值的话，它监听的原始的Observable时就会触发onError()函数。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Subscription subscription = getCurrentTemperature()</span><br><span class="line">    .timeout(2,TimeUnit.SECONDS)</span><br><span class="line">    .subscribe(new Observable&lt;Integer&gt;() &#123;</span><br><span class="line"> </span><br><span class="line">        @Override</span><br><span class="line">        public void <span class="function"><span class="title">onCompleted</span></span>() &#123;</span><br><span class="line"> </span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        @Override</span><br><span class="line">        public void onError(Throwable e) &#123;</span><br><span class="line">            Log.d(<span class="string">"RXJAVA"</span>,<span class="string">"You should go check the sensor, dude"</span>);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">        @Override</span><br><span class="line">        public void onNext(Integer currentTemperature) &#123;</span><br><span class="line">            updateDisplay(currentTemperature)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br></pre></td></tr></table></figure>
+<p>和sample()一样，timeout()使用TimeUnit对象来指定时间间隔。</p>
+<p>下图中展示了一旦Observable超过了限时就会触发onError()函数：因为超时后它才到达，所以最后一个元素将不会发射出去。</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fq5mcmonntj30ug0f076b.jpg" alt=""></p>
+<h2 id="Debounce"><a href="#Debounce" class="headerlink" title="Debounce"></a>Debounce</h2><p>debounce()函数过滤掉由Observable发射的速率过快的数据；如果在一个指定的时间间隔过去了仍旧没有发射一个，那么它将发射最后的那个。</p>
+<p>就像sample()和timeout()函数一样，debounce()使用TimeUnit对象指定时间间隔。</p>
+<p>下图展示了多久从Observable发射一次新的数据，debounce()函数开启一个内部定时器，如果在这个时间间隔内没有新的数据发射，则新的Observable发射出最后一个数据：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tNc79gy1fq5mczxn6fj30pa0cgta3.jpg" alt=""></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这一章中，我们学习了如何过滤一个可观测序列。我们现在可以使用filter()，skip()，和sample()来创建我们想要的Observable。</p>
+<p>下一章中，我们将学习如何转换一个序列，将函数应用到每个元素，给它们分组和扫描来创建我们所需要的能完成目标的特定Observable。</p>
+
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/03/10/Android APP 性能优化的一些思考/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            post.newer
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2016/01/08/RxJava开发精要3-向响应式世界问好/" id="post_nav-older" class="next-content">
+            post.older
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/avatar.png" alt="Jiang&#39;s Blog's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        youremail@email.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="#" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                sidebar.homepage
+            </a>
+        </li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    sidebar.archive
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2017/06/">June 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/04/">April 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/03/">March 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2016/01/">January 2016<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/archives/2013/07/">July 2013<span class="sidebar_archives-count">1</span></a>
+            </ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+
+    <!-- Pages  -->
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material"  class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            misc.theme - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/twitter" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+        <a href="https://www.facebook.com/facebook" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-facebook">
+                <span class="visuallyhidden">Facebook</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Google + -->
+    
+        <a href="https://www.google.com/" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-gplus">
+                <span class="visuallyhidden">Google Plus</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Weibo -->
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+
+    <!-- Bilibili -->
+    
+
+    <!-- Telegram -->
+    
+    
+    <!-- V2EX -->
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©<script type="text/javascript">var fd = new Date();document.write("&nbsp;" + fd.getFullYear() + "&nbsp;");</script>Jiang
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?V/53wGualMuiPM3xoetD5Q==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 800);
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.2 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
